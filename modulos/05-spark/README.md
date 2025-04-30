@@ -25,20 +25,14 @@ Este módulo aborda os conceitos e práticas do Apache Spark para processamento 
 
 ### 1. Fundamentos do Spark
 
-```mermaid
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
-graph TD
-    A[Driver] --> B[SparkContext]
-    B --> C[Executors]
-    C --> D[Tasks]
-    
-    E[RDD] --> F[DataFrame]
-    F --> G[SQL]
-    
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style C fill:#bfb,stroke:#333,stroke-width:2px
-    style D fill:#fbf,stroke:#333,stroke-width:2px
+```
++---------+     +-------------+     +-----------+     +--------+
+| Driver  | --> |SparkContext | --> | Executors | --> | Tasks  |
++---------+     +-------------+     +-----------+     +--------+
+
++---------+     +-----------+     +--------+
+|  RDD    | --> | DataFrame | --> |  SQL   |
++---------+     +-----------+     +--------+
 ```
 
 #### 1.1 Conceitos Básicos
@@ -51,19 +45,20 @@ graph TD
 
 #### 1.2 Arquitetura Spark
 
-```mermaid
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
-flowchart LR
-    A[Driver Program] --> B[Cluster Manager]
-    B --> C[Worker Node 1]
-    B --> D[Worker Node 2]
-    B --> E[Worker Node N]
-    
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style C fill:#bfb,stroke:#333,stroke-width:2px
-    style D fill:#fbf,stroke:#333,stroke-width:2px
-    style E fill:#ff9,stroke:#333,stroke-width:2px
+```
++----------------+
+| Driver Program |
++----------------+
+         |
+         v
++----------------+
+|Cluster Manager |
++----------------+
+    |     |     |
+    v     v     v
++--------+ +--------+ +--------+
+|Worker 1| |Worker 2| |Worker N|
++--------+ +--------+ +--------+
 ```
 
 ### 2. PySpark DataFrame API

@@ -22,18 +22,10 @@ Este módulo aborda os conceitos e práticas de Data Warehouse usando o Google B
 
 ### 1. Fundamentos de Data Warehouse
 
-```mermaid
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
-graph TD
-    A[Fontes] --> B[Staging]
-    B --> C[Data Warehouse]
-    C --> D[Data Marts]
-    D --> E[Visualização]
-    
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style C fill:#bfb,stroke:#333,stroke-width:2px
-    style D fill:#fbf,stroke:#333,stroke-width:2px
+```
++---------+     +---------+     +---------------+     +-----------+     +-------------+
+| Fontes  | --> | Staging | --> |Data Warehouse | --> |Data Marts | --> |Visualização |
++---------+     +---------+     +---------------+     +-----------+     +-------------+
 ```
 
 #### 1.1 Conceitos Básicos
@@ -45,18 +37,24 @@ graph TD
 
 #### 1.2 Modelagem Dimensional
 
-```mermaid
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
-flowchart LR
-    A[Fato] --> B[Dimensão Tempo]
-    A --> C[Dimensão Cliente]
-    A --> D[Dimensão Produto]
-    A --> E[Dimensão Local]
-    
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style C fill:#bfb,stroke:#333,stroke-width:2px
-    style D fill:#fbf,stroke:#333,stroke-width:2px
+```
+                  +----------------+
+                  |  Dimensão     |
+                  |    Tempo      |
+                  +----------------+
+                         ▲
+                         |
++----------------+  +----------+  +----------------+
+|   Dimensão     |  |          |  |   Dimensão     |
+|   Cliente      |◄-|   FATO   |->|   Produto     |
++----------------+  |          |  +----------------+
+                   +----------+
+                         |
+                         ▼
+                  +----------------+
+                  |   Dimensão     |
+                  |    Local       |
+                  +----------------+
 ```
 
 ### 2. BigQuery Fundamentals

@@ -22,21 +22,23 @@ Este módulo aborda os conceitos e práticas essenciais do Docker para ambientes
 
 ### 1. Fundamentos do Docker
 
-```mermaid
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
-graph TD
-    A[Container] --> B[Image]
-    B --> C[Dockerfile]
-    C --> D[Base Image]
-    
-    E[Volume] --> A
-    F[Network] --> A
-    G[Environment] --> A
-    
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style C fill:#bfb,stroke:#333,stroke-width:2px
-    style D fill:#fbf,stroke:#333,stroke-width:2px
+```
++-------------+     +---------+     +-----------+     +------------+
+| Container   | --> |  Image  | --> | Dockerfile| --> | Base Image |
++-------------+     +---------+     +-----------+     +------------+
+       ^
+       |
++------------+
+|  Volume    |
++------------+
+       ^
++------------+
+|  Network   |
++------------+
+       ^
++------------+
+| Environment|
++------------+
 ```
 
 #### 1.1 Conceitos Básicos
@@ -106,16 +108,20 @@ CMD ["python", "app.py"]
 
 ### 3. Docker Compose
 
-```mermaid
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
-graph LR
-    A[Docker Compose] --> B[Services]
-    B --> C[Networks]
-    B --> D[Volumes]
-    B --> E[Environment]
-    
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
+```
++------------------+
+| Docker Compose   |
++------------------+
+         |
+         v
++------------------+
+|    Services      |
++------------------+
+         |
+    +----+----+----+
+    |         |    |
+    v         v    v
+Networks  Volumes  Environment
 ```
 
 #### 3.1 Estrutura do docker-compose.yaml

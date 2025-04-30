@@ -45,48 +45,35 @@ Este treinamento completo sobre Modern Data Stack foi desenvolvido para profissi
 
 ## 📅 Cronograma
 
-```mermaid
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
-gantt
-    title Cronograma do Treinamento
-    dateFormat  YYYY-MM-DD
-    section Módulo 1
-    Fundamentos           :2024-01-01, 3d
-    section Módulo 2
-    Docker               :2024-01-04, 3d
-    section Módulo 3
-    Airflow             :2024-01-07, 3d
-    section Módulo 4
-    DBT                 :2024-01-10, 3d
-    section Módulo 5
-    Spark               :2024-01-13, 3d
-    section Módulo 6
-    BigQuery            :2024-01-16, 3d
-    section Módulo 7
-    Projeto Final       :2024-01-19, 3d
+```
++------------------------------------------------------------------------------+
+|                           Cronograma do Treinamento                           |
++---------------+---------------------------+--------------------------------+
+| Módulo        | Data Início              | Duração                        |
++---------------+---------------------------+--------------------------------+
+| Fundamentos   | 2024-01-01               | ███ 3 dias                     |
+| Docker        | 2024-01-04               | ███ 3 dias                     |
+| Airflow       | 2024-01-07               | ███ 3 dias                     |
+| DBT           | 2024-01-10               | ███ 3 dias                     |
+| Spark         | 2024-01-13               | ███ 3 dias                     |
+| BigQuery      | 2024-01-16               | ███ 3 dias                     |
+| Projeto Final | 2024-01-19               | ███ 3 dias                     |
++---------------+---------------------------+--------------------------------+
 ```
 
 ## 🗺️ Estrutura do Treinamento
 
-```mermaid
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
-graph TD
-    A[Modern Data Stack] --> B[Módulo 1: Fundamentos]
-    A --> C[Módulo 2: Docker]
-    A --> D[Módulo 3: Airflow]
-    A --> E[Módulo 4: DBT]
-    A --> F[Módulo 5: Spark]
-    A --> G[Módulo 6: BigQuery]
-    A --> H[Módulo 7: Projeto Final]
-    
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style C fill:#bfb,stroke:#333,stroke-width:2px
-    style D fill:#fbf,stroke:#333,stroke-width:2px
-    style E fill:#ff9,stroke:#333,stroke-width:2px
-    style F fill:#f9f,stroke:#333,stroke-width:2px
-    style G fill:#bbf,stroke:#333,stroke-width:2px
-    style H fill:#bfb,stroke:#333,stroke-width:2px
+```
+                    +-------------------+
+                    | Modern Data Stack |
+                    +-------------------+
+                             |
+         +------------------+------------------+
+         |        |        |        |         |         |         |
+         v        v        v        v         v         v         v
++----------------+  +----------+  +---------+  +-----+  +-------+  +---------+  +-------------+
+| 1. Fundamentos |  | 2.Docker |  |3.Airflow|  |4.DBT|  |5.Spark|  |6.BigQuery|  |7.Proj.Final |
++----------------+  +----------+  +---------+  +-----+  +-------+  +---------+  +-------------+
 ```
 
 ## 📂 Módulos

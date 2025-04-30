@@ -23,21 +23,19 @@ Este módulo aborda os conceitos e práticas do Apache Airflow para orquestraç�
 
 ### 1. Fundamentos do Airflow
 
-```mermaid
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
-graph TD
-    A[DAG] --> B[Tasks]
-    B --> C[Operators]
-    B --> D[Dependencies]
-    
-    E[Scheduler] --> A
-    F[Executor] --> B
-    G[WebServer] --> A
-    
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style C fill:#bfb,stroke:#333,stroke-width:2px
-    style D fill:#fbf,stroke:#333,stroke-width:2px
+```
++--------+     +---------+
+|  DAG   | <-- |Scheduler|
++--------+     +---------+
+    |
+    v
++--------+     +---------+
+| Tasks  | <-- |Executor |
++--------+     +---------+
+    |
++------------+  +--------------+
+| Operators  |  | Dependencies |
++------------+  +--------------+
 ```
 
 #### 1.1 Conceitos Básicos
@@ -50,20 +48,15 @@ graph TD
 
 #### 1.2 Arquitetura do Airflow
 
-```mermaid
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
-flowchart LR
-    A[WebServer] --> B[Metadata DB]
-    C[Scheduler] --> B
-    D[Workers] --> B
-    E[DAG Files] --> C
-    E --> A
-    
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style C fill:#bfb,stroke:#333,stroke-width:2px
-    style D fill:#fbf,stroke:#333,stroke-width:2px
-    style E fill:#ff9,stroke:#333,stroke-width:2px
+```
++------------+     +-------------+     +---------+
+| DAG Files  | --> |  Scheduler  | --> |         |
++------------+     +-------------+     |         |
+      |                               |Metadata |
+      v                               |   DB    |
++------------+     +-------------+    |         |
+| WebServer  | --> |  Workers   | --> |         |
++------------+     +-------------+     +---------+
 ```
 
 ### 2. Desenvolvimento de DAGs

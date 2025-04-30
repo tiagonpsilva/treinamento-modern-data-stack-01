@@ -24,22 +24,26 @@ Este módulo aborda os conceitos fundamentais da Modern Data Stack, apresentando
 
 ### 1. Evolução das Arquiteturas de Dados
 
-```mermaid
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
-timeline
-    title Evolução das Arquiteturas de Dados
-    1990 : Data Warehouse Tradicional
-         : Processos Batch
-         : ETL Clássico
-    2000 : Data Lake
-         : Hadoop
-         : MapReduce
-    2010 : Cloud Data Warehouse
-         : Big Data
-         : Spark
-    2020 : Modern Data Stack
-         : Data Lakehouse
-         : ELT & Streaming
+```
++-------------------------------------------------------------------------+
+|                    Evolução das Arquiteturas de Dados                    |
++------+--------------------------------------------------------+
+| 1990 | ► Data Warehouse Tradicional                            |
+|      | ► Processos Batch                                       |
+|      | ► ETL Clássico                                         |
++------+--------------------------------------------------------+
+| 2000 | ► Data Lake                                            |
+|      | ► Hadoop                                               |
+|      | ► MapReduce                                            |
++------+--------------------------------------------------------+
+| 2010 | ► Cloud Data Warehouse                                 |
+|      | ► Big Data                                             |
+|      | ► Spark                                                |
++------+--------------------------------------------------------+
+| 2020 | ► Modern Data Stack                                    |
+|      | ► Data Lakehouse                                       |
+|      | ► ELT & Streaming                                      |
++------+--------------------------------------------------------+
 ```
 
 #### 1.1 Desafios Históricos
@@ -58,25 +62,23 @@ timeline
 
 ### 2. Componentes da Modern Data Stack
 
-```mermaid
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
-graph TD
-    A[Fontes de Dados] -->|Extração| B[Data Lake]
-    B -->|Transformação| C[Data Warehouse]
-    C -->|Análise| D[BI/Analytics]
-    
-    E[Orquestração - Airflow] -->|Controle| B
-    E -->|Controle| C
-    
-    F[Transformação - DBT] -->|Modelos| C
-    
-    G[Processamento - Spark] -->|Computação| B
-    G -->|Computação| C
-    
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style C fill:#bfb,stroke:#333,stroke-width:2px
-    style D fill:#fbf,stroke:#333,stroke-width:2px
+```
++----------------+     +------------+     +----------------+     +-------------+
+| Fontes de Dados| --> | Data Lake  | --> |Data Warehouse | --> | BI/Analytics|
++----------------+     +------------+     +----------------+     +-------------+
+                           ▲  ▲                  ▲
+                           |  |                  |
+              +-----------+   +----------+       |
+              |                         |        |
+    +------------------+     +------------------+|
+    |Orquestração      |     |Processamento     ||
+    |(Airflow)         |     |(Spark)           ||
+    +------------------+     +------------------+|
+                                               ||
+                            +------------------+|
+                            |Transformação     |
+                            |(DBT)             |
+                            +------------------+
 ```
 
 #### 2.1 Camadas Principais

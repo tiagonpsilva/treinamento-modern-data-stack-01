@@ -23,76 +23,50 @@ Este módulo integra todas as ferramentas e conceitos aprendidos durante o trein
 
 ### 1. Visão Geral
 
-```mermaid
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
-graph TD
-    A[APIs] --> B[Airflow]
-    B --> C[Data Lake]
-    C --> D[Spark]
-    D --> E[BigQuery]
-    E --> F[DBT]
-    F --> G[Metabase]
-    
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style C fill:#bfb,stroke:#333,stroke-width:2px
-    style D fill:#fbf,stroke:#333,stroke-width:2px
-    style E fill:#ff9,stroke:#333,stroke-width:2px
-    style F fill:#f9f,stroke:#333,stroke-width:2px
-    style G fill:#bbf,stroke:#333,stroke-width:2px
+```
++-------+     +---------+     +-----------+     +--------+     +----------+     +-------+     +----------+
+| APIs  | --> | Airflow | --> | Data Lake | --> | Spark  | --> | BigQuery | --> | DBT   | --> |Metabase  |
++-------+     +---------+     +-----------+     +--------+     +----------+     +-------+     +----------+
 ```
 
 ### 2. Arquitetura da Solução
 
-```mermaid
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
-flowchart LR
-    A[Fontes] --> B[Ingestão]
-    B --> C[Processamento]
-    C --> D[Armazenamento]
-    D --> E[Transformação]
-    E --> F[Visualização]
-    
-    subgraph Fontes
-    A1[API Voos]
-    A2[API Hotéis]
-    A3[Dados Clima]
-    end
-    
-    subgraph Ingestão
-    B1[Airflow DAGs]
-    end
-    
-    subgraph Processamento
-    C1[Spark Jobs]
-    end
-    
-    subgraph Armazenamento
-    D1[BigQuery DW]
-    end
-    
-    subgraph Transformação
-    E1[DBT Models]
-    end
-    
-    subgraph Visualização
-    F1[Metabase]
-    end
-    
-    A1 & A2 & A3 --> B1
-    B1 --> C1
-    C1 --> D1
-    D1 --> E1
-    E1 --> F1
-    
-    style A1 fill:#f9f,stroke:#333,stroke-width:2px
-    style A2 fill:#bbf,stroke:#333,stroke-width:2px
-    style A3 fill:#bfb,stroke:#333,stroke-width:2px
-    style B1 fill:#fbf,stroke:#333,stroke-width:2px
-    style C1 fill:#ff9,stroke:#333,stroke-width:2px
-    style D1 fill:#f9f,stroke:#333,stroke-width:2px
-    style E1 fill:#bbf,stroke:#333,stroke-width:2px
-    style F1 fill:#bfb,stroke:#333,stroke-width:2px
+```
+Fontes:
++----------+  +----------+  +----------+
+|API Voos  |  |API Hotéis|  |Dados     |
+|          |  |          |  |Clima     |
++----------+  +----------+  +----------+
+      |            |            |
+      v            v            v
+    +-------------------------+
+    |      Ingestão          |
+    |    (Airflow DAGs)      |
+    +-------------------------+
+              |
+              v
+    +-------------------------+
+    |    Processamento       |
+    |    (Spark Jobs)        |
+    +-------------------------+
+              |
+              v
+    +-------------------------+
+    |    Armazenamento       |
+    |    (BigQuery DW)       |
+    +-------------------------+
+              |
+              v
+    +-------------------------+
+    |    Transformação       |
+    |    (DBT Models)        |
+    +-------------------------+
+              |
+              v
+    +-------------------------+
+    |    Visualização        |
+    |    (Metabase)          |
+    +-------------------------+
 ```
 
 ### 3. Componentes do Projeto
