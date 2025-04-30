@@ -82,48 +82,231 @@ Este módulo aborda os conceitos fundamentais da Modern Data Stack, apresentando
 ```
 
 #### 2.1 Camadas Principais
+
 1. **Ingestão de Dados**
-   - Batch vs Streaming
-   - APIs e Conectores
-   - Formatos de dados
+   - **Batch vs Streaming**
+     - Batch: Processamento em lotes programados, ideal para grandes volumes de dados históricos
+     - Streaming: Processamento em tempo real, essencial para dados que precisam ser analisados imediatamente
+   
+   - **APIs e Conectores**
+     - REST APIs: Integração com sistemas modernos via endpoints HTTP
+     - Conectores Nativos: Ferramentas especializadas como Fivetran e Airbyte que oferecem integrações prontas
+     - CDC (Change Data Capture): Captura de mudanças em tempo real em bancos de dados
+   
+   - **Formatos de Dados**
+     - Estruturados: CSV, JSON, Parquet, Avro
+     - Semi-estruturados: XML, logs
+     - Não estruturados: Imagens, áudios, documentos
 
 2. **Armazenamento**
-   - Data Lake
-   - Data Warehouse
-   - Data Lakehouse
+   - **Data Lake**
+     - Armazenamento de baixo custo para grandes volumes
+     - Suporte a dados brutos em qualquer formato
+     - Tecnologias: AWS S3, Azure Data Lake Storage, Google Cloud Storage
+     - Ideal para exploração e ciência de dados
+   
+   - **Data Warehouse**
+     - Otimizado para consultas analíticas
+     - Esquema estruturado e dados processados
+     - Tecnologias: Snowflake, BigQuery, Redshift
+     - Ideal para BI e relatórios
+   
+   - **Data Lakehouse**
+     - Combina o melhor dos dois mundos
+     - Formatos otimizados como Delta Lake e Iceberg
+     - Suporte a ACID em dados brutos
+     - Ideal para análises avançadas e ML
 
 3. **Processamento**
-   - ETL vs ELT
-   - Batch Processing
-   - Stream Processing
+   - **ETL vs ELT**
+     - ETL: Transformação antes do carregamento, ideal para dados sensíveis
+     - ELT: Transformação após carregamento, mais flexível e escalável
+   
+   - **Batch Processing**
+     - Processamento em lotes programados
+     - Ferramentas: Apache Spark, Apache Flink
+     - Ideal para transformações complexas em grandes volumes
+   
+   - **Stream Processing**
+     - Processamento em tempo real
+     - Ferramentas: Kafka Streams, Apache Flink
+     - Ideal para análises em tempo real e detecção de anomalias
 
 4. **Transformação**
-   - SQL vs Python
-   - DBT
-   - Data Quality
+   - **SQL vs Python**
+     - SQL: Linguagem padrão para transformações em data warehouses
+     - Python: Flexibilidade para transformações complexas e ML
+   
+   - **DBT (Data Build Tool)**
+     - Transformações modulares em SQL
+     - Testes e documentação integrados
+     - Versionamento e CI/CD para dados
+     - Lineage e governança
+   
+   - **Data Quality**
+     - Validação de dados
+     - Monitoramento de qualidade
+     - Alertas e notificações
+     - Ferramentas: Great Expectations, dbt tests
 
 5. **Visualização**
-   - Business Intelligence
-   - Dashboards
-   - Self-service Analytics
+   - **Business Intelligence**
+     - Dashboards interativos
+     - KPIs e métricas de negócio
+     - Ferramentas: Looker, Power BI, Tableau
+   
+   - **Dashboards**
+     - Visualizações customizadas
+     - Auto-serviço para usuários finais
+     - Compartilhamento e colaboração
+   
+   - **Self-service Analytics**
+     - Exploração ad-hoc de dados
+     - SQL notebooks
+     - Ferramentas: Metabase, Mode, Preset
+
+6. **Governança e Segurança**
+   - **Catálogo de Dados**
+     - Metadados e documentação
+     - Descoberta de dados
+     - Ferramentas: Amundsen, DataHub
+   
+   - **Linhagem de Dados**
+     - Rastreamento de origem e transformações
+     - Impacto de mudanças
+     - Conformidade e auditoria
+   
+   - **Controle de Acesso**
+     - Autenticação e autorização
+     - Mascaramento de dados sensíveis
+     - Políticas de segurança
+
+7. **Orquestração**
+   - **Workflow Management**
+     - Agendamento de jobs
+     - Dependências entre tarefas
+     - Ferramentas: Apache Airflow, Dagster
+   
+   - **Monitoramento**
+     - Alertas e notificações
+     - SLAs e métricas
+     - Logs e debugging
+   
+   - **Recuperação de Falhas**
+     - Retry policies
+     - Backfill de dados
+     - Rollback de mudanças
 
 ### 3. Conceitos Fundamentais
 
-#### 3.1 Data Lakehouse
-- Combinação de Data Lake e Data Warehouse
-- Benefícios e trade-offs
-- Casos de uso
+#### 3.1 Data Lake
+Um Data Lake é um repositório centralizado que permite armazenar todos os seus dados estruturados e não estruturados em qualquer escala. Diferentemente de um data warehouse tradicional, um data lake pode armazenar dados em seu formato bruto, sem necessidade de primeiro estruturar os dados.
 
-#### 3.2 Governança de Dados
-- Metadados
-- Linhagem
-- Segurança
-- Compliance
+```
+Fonte de Dados     Ingestão          Data Lake         Consumidores
+     |                |                  |                  |
+     |  Dados Brutos  |                  |                  |
+     |--------------->|                  |                  |
+     |                |   Armazena Raw   |                  |
+     |                |----------------->|                  |
+     |                |                  |                  |
+     |  + Dados       |                  |                  |
+     |--------------->|                  |                  |
+     |                |    Append Raw    |                  |
+     |                |----------------->|                  |
+     |                |                  |                  |
+     |                |                  |  Query Raw Data  |
+     |                |                  |<-----------------|
+     |                |                  |                  |
+     |                |                  |   Return Data    |
+     |                |                  |----------------->|
+     |                |                  |                  |
+```
 
-#### 3.3 Arquiteturas Modernas
-- Lambda Architecture
-- Kappa Architecture
-- Medallion Architecture
+#### 3.2 Data Warehouse
+Um Data Warehouse é um sistema projetado para análise e relatórios de dados. É um repositório central de dados integrados de uma ou mais fontes diferentes.
+
+```
+Fonte de Dados    ETL/ELT       Data Warehouse       Analistas
+     |              |                |                   |
+     | Dados Brutos |                |                   |
+     |------------->|                |                   |
+     |              | Transforma     |                   |
+     |              |--------------->|                   |
+     |              |               |                    |
+     |              | Carrega DW    |                   |
+     |              |-------------->|                   |
+     |              |              |                    |
+     |              |              | Query Estruturada  |
+     |              |              |<------------------|
+     |              |              |                   |
+     |              |              | Retorna Análise   |
+     |              |              |------------------>|
+     |              |              |                   |
+```
+
+#### 3.3 ETL vs ELT
+
+##### ETL (Extract, Transform, Load)
+```
+Fonte    Ambiente ETL    Staging    Transformação    Data Warehouse
+  |           |             |             |               |
+  | Extract   |             |             |               |
+  |---------->|             |             |               |
+  |           | Load Staging|             |               |
+  |           |------------>|             |               |
+  |           |             |             |               |
+  |           |             | Transform   |               |
+  |           |             |------------>|               |
+  |           |             |             |               |
+  |           |             |             | Load Final    |
+  |           |             |             |-------------->|
+  |           |             |             |               |
+```
+
+##### ELT (Extract, Load, Transform)
+```
+Fonte    Data Warehouse    Transformação    Consumo
+  |            |                |              |
+  | Extract    |                |              |
+  |----------->|                |              |
+  |            | Load Raw       |              |
+  |            |--------------->|              |
+  |            |                |              |
+  |            |    Transform   |              |
+  |            |<-------------->|              |
+  |            |                |              |
+  |            |                | Consumo      |
+  |            |                |------------->|
+  |            |                |              |
+```
+
+#### 3.4 Data Mesh
+Uma abordagem descentralizada para gerenciamento de dados que trata dados como um produto e aplica princípios de arquitetura distribuída.
+
+```
+Domínio A     Plataforma     Domínio B     Governança    Consumidores
+    |             |              |             |              |
+    | Dados A     |              |             |              |
+    |------------>|              |             |              |
+    |             | Registro     |             |              |
+    |             |--------------------------->|              |
+    |             |              |             |              |
+    |             |              | Dados B     |              |
+    |             |<-------------|             |              |
+    |             | Registro     |             |              |
+    |             |--------------------------->|              |
+    |             |              |             |              |
+    |             |              |             | Políticas    |
+    |             |<----------------------------|              |
+    |             |              |             |              |
+    |             | Dados Governados           |              |
+    |             |----------------------------------------->|
+    |             |              |             |              |
+    |             | Feedback     |             |              |
+    |             |<-----------------------------------------|
+    |             |              |             |              |
+```
 
 ## 💻 Exercícios Práticos
 
@@ -179,3 +362,100 @@ Desenvolva um documento de arquitetura para uma Modern Data Stack que inclua:
 
 ## 🔄 Próximos Passos
 No próximo módulo, mergulharemos no Docker para ambientes de dados, onde você aprenderá a containerizar e orquestrar seus serviços de dados. 
+
+## Arquiteturas Modernas
+
+### 1. Arquitetura Lambda
+
+A arquitetura Lambda é um paradigma de processamento de dados que visa lidar com grandes quantidades de dados combinando processamento em batch e em tempo real.
+
+```
++----------------+     +-----------+
+|                |     |           |     +---------------+
+| Fontes de      +---->| Ingestão  +---->|  Camada Batch |
+| Dados          |     |           |     |   Processing  |
+|                |     |           |     +-------+-------+
++----------------+     |           |             |
+                      |           |     +--------v--------+
+                      |           +---->|  Batch Views    |
+                      |           |     |                 |
+                      |           |     +--------+--------+
+                      |           |              |
+                      |           |     +--------v--------+
+                      |           |     |                 |
+                      |           +---->| Camada Speed    |
+                      |           |     |  Processing     |
+                      +-----------+     +--------+--------+
+                                                |
+                                       +--------v--------+
+                                       | Realtime Views  |
+                                       |                 |
+                                       +--------+--------+
+                                                |
+                                       +--------v--------+
+                                       |   Serving       |
+                                       |    Layer        |
+                                       +--------+--------+
+                                                |
+                                       +--------v--------+
+                                       |  Aplicações     |
+                                       |                 |
+                                       +----------------+
+```
+
+### 2. Arquitetura Kappa
+
+A arquitetura Kappa é uma simplificação da arquitetura Lambda, tratando todos os dados como streams.
+
+```
++----------------+     +------------------+     +------------------+
+|                |     |                  |     |                  |
+| Fontes de      +---->|  Stream          +---->|  Real-time       |
+| Dados          |     |  Processing      |     |  Layer           |
+|                |     |                  |     |                  |
++----------------+     +------------------+     +--------+---------+
+                                                        |
+                                               +--------v---------+
+                                               |                  |
+                                               |  Serving Layer   |
+                                               |                  |
+                                               +--------+---------+
+                                                        |
+                                               +--------v---------+
+                                               |                  |
+                                               |   Aplicações     |
+                                               |                  |
+                                               +------------------+
+```
+
+### 3. Modern Data Stack
+
+A Modern Data Stack é uma arquitetura que utiliza ferramentas modernas e cloud-native para construir pipelines de dados.
+
+```
++------------------+     +------------------+     +------------------+
+|                  |     |   Ferramentas    |     |                  |
+|  Fontes de       +---->|   de Ingestão    +---->|  Data Warehouse  |
+|  Dados           |     |  Fivetran/Airbyte|     | Snowflake/BigQ  |
+|                  |     |                  |     |                  |
++------------------+     +------------------+     +--------+---------+
+                                                          |
+                                                 +--------v---------+
+                                                 |  Transformação   |
+                                                 |      (dbt)       |
+                                                 |                  |
+                                                 +--------+---------+
+                                                          |
+                                                 +--------v---------+
+                                                 |   Analytics/BI   |
+                                                 | Looker/Metabase  |
+                                                 |                  |
+                                                 +------------------+
+```
+
+## Exercícios
+
+Para acessar os exercícios deste módulo, consulte os seguintes arquivos:
+- [Exercício 1: Conceitos Básicos](exercicios/exercicio-01.md)
+- [Exercício 2: Arquiteturas de Dados](exercicios/exercicio-02.md)
+- [Exercício 3: Análise Comparativa](exercicios/exercicio-03.md) 
