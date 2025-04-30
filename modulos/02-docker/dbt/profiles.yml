@@ -1,0 +1,19 @@
+modern_data_stack:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: postgres
+      user: modern_data_stack
+      password: modern_data_stack
+      port: 5432
+      dbname: modern_data_stack
+      schema: public
+      threads: 4
+    prod:
+      type: bigquery
+      method: service-account
+      project: your-project-id
+      dataset: modern_data_stack_prod
+      threads: 4
+      keyfile: /usr/app/credentials/bigquery-keyfile.json 

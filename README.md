@@ -1,7 +1,21 @@
 # 🚀 Treinamento Modern Data Stack
 
-## 📋 Visão Geral
+## 🔍 Sobre este Projeto
 Este treinamento completo sobre Modern Data Stack foi desenvolvido para profissionais que desejam dominar as principais ferramentas e práticas do ecossistema moderno de dados. Com foco em casos práticos de análise de voos e hospedagens, o treinamento oferece uma experiência hands-on com as tecnologias mais relevantes do mercado.
+
+## 📋 Índice
+
+- [Objetivos](#-objetivos)
+- [Público-Alvo](#-público-alvo)
+- [Pré-requisitos](#-pré-requisitos)
+- [Tecnologias Abordadas](#%EF%B8%8F-tecnologias-abordadas)
+- [Cronograma](#-cronograma)
+- [Estrutura do Treinamento](#%EF%B8%8F-estrutura-do-treinamento)
+- [Módulos](#-módulos)
+- [Setup do Ambiente](#%EF%B8%8F-setup-do-ambiente)
+- [Avaliação](#-avaliação)
+- [Recursos Adicionais](#-recursos-adicionais)
+- [Suporte](#-suporte)
 
 ## 🎯 Objetivos
 - Dominar os fundamentos da Modern Data Stack
@@ -167,13 +181,4 @@ python verify_environment.py
 ## 👨‍🏫 Suporte
 - Discord: [Link para servidor]
 - GitHub Issues: [Link para issues]
-- Email: suporte@moderndatastack.com
-
-## 📜 Licença
-Este treinamento é distribuído sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
-
-## 🙏 Agradecimentos
-- Comunidade Open Source
-- Contribuidores
-- Revisores
-- Alunos 
+- Email: suporte@moderndatastack.com 
