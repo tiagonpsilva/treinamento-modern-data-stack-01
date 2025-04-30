@@ -25,8 +25,8 @@ Este módulo aborda os conceitos e práticas do Apache Spark para processamento 
 
 ### 1. Fundamentos do Spark
 
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 ```mermaid
+%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 graph TD
     A[Driver] --> B[SparkContext]
     B --> C[Executors]
@@ -51,8 +51,8 @@ graph TD
 
 #### 1.2 Arquitetura Spark
 
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 ```mermaid
+%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 flowchart LR
     A[Driver Program] --> B[Cluster Manager]
     B --> C[Worker Node 1]

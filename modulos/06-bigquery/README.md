@@ -22,8 +22,8 @@ Este módulo aborda os conceitos e práticas de Data Warehouse usando o Google B
 
 ### 1. Fundamentos de Data Warehouse
 
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 ```mermaid
+%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 graph TD
     A[Fontes] --> B[Staging]
     B --> C[Data Warehouse]
@@ -45,8 +45,8 @@ graph TD
 
 #### 1.2 Modelagem Dimensional
 
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 ```mermaid
+%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 flowchart LR
     A[Fato] --> B[Dimensão Tempo]
     A --> C[Dimensão Cliente]

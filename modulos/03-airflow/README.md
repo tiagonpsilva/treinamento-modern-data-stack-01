@@ -23,8 +23,8 @@ Este módulo aborda os conceitos e práticas do Apache Airflow para orquestraç�
 
 ### 1. Fundamentos do Airflow
 
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 ```mermaid
+%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 graph TD
     A[DAG] --> B[Tasks]
     B --> C[Operators]
@@ -50,8 +50,8 @@ graph TD
 
 #### 1.2 Arquitetura do Airflow
 
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 ```mermaid
+%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 flowchart LR
     A[WebServer] --> B[Metadata DB]
     C[Scheduler] --> B

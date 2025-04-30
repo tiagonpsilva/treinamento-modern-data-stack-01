@@ -23,8 +23,8 @@ Este módulo integra todas as ferramentas e conceitos aprendidos durante o trein
 
 ### 1. Visão Geral
 
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 ```mermaid
+%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 graph TD
     A[APIs] --> B[Airflow]
     B --> C[Data Lake]
@@ -44,8 +44,8 @@ graph TD
 
 ### 2. Arquitetura da Solução
 
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 ```mermaid
+%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 flowchart LR
     A[Fontes] --> B[Ingestão]
     B --> C[Processamento]

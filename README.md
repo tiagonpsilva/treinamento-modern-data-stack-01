@@ -45,8 +45,8 @@ Este treinamento completo sobre Modern Data Stack foi desenvolvido para profissi
 
 ## 📅 Cronograma
 
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 ```mermaid
+%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 gantt
     title Cronograma do Treinamento
     dateFormat  YYYY-MM-DD
@@ -68,8 +68,8 @@ gantt
 
 ## 🗺️ Estrutura do Treinamento
 
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 ```mermaid
+%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 graph TD
     A[Modern Data Stack] --> B[Módulo 1: Fundamentos]
     A --> C[Módulo 2: Docker]

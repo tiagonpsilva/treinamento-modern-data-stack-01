@@ -24,8 +24,8 @@ Este módulo aborda os conceitos fundamentais da Modern Data Stack, apresentando
 
 ### 1. Evolução das Arquiteturas de Dados
 
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 ```mermaid
+%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 timeline
     title Evolução das Arquiteturas de Dados
     1990 : Data Warehouse Tradicional
@@ -58,8 +58,8 @@ timeline
 
 ### 2. Componentes da Modern Data Stack
 
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 ```mermaid
+%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 graph TD
     A[Fontes de Dados] -->|Extração| B[Data Lake]
     B -->|Transformação| C[Data Warehouse]

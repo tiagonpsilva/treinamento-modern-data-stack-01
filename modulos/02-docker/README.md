@@ -22,8 +22,8 @@ Este módulo aborda os conceitos e práticas essenciais do Docker para ambientes
 
 ### 1. Fundamentos do Docker
 
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 ```mermaid
+%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 graph TD
     A[Container] --> B[Image]
     B --> C[Dockerfile]
@@ -106,8 +106,8 @@ CMD ["python", "app.py"]
 
 ### 3. Docker Compose
 
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 ```mermaid
+%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 graph LR
     A[Docker Compose] --> B[Services]
     B --> C[Networks]

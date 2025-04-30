@@ -22,8 +22,8 @@ Este módulo aborda os conceitos e práticas do DBT (Data Build Tool) para trans
 
 ### 1. Fundamentos do DBT
 
-%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 ```mermaid
+%%{init: { "themeVariables": { "fontFamily": "Arial", "fontSize": "10px" } }}%%
 graph TD
     A[Source] --> B[Staging]
     B --> C[Intermediate]
