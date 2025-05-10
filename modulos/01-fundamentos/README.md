@@ -197,6 +197,13 @@ Este módulo aborda os conceitos fundamentais da Modern Data Stack, apresentando
      - Backfill de dados
      - Rollback de mudanças
 
+#### DuckDB: SQL Analítico Local
+O DuckDB é um banco de dados analítico embutido, orientado a colunas, ideal para:
+- Laboratórios de SQL
+- Prototipagem de pipelines
+- Testes rápidos sem infraestrutura de cloud
+Permite executar queries analíticas em arquivos Parquet, CSV ou DataFrames diretamente no seu notebook Python, com performance de data warehouse, sem necessidade de infraestrutura dedicada.
+
 ### 3. Conceitos Fundamentais
 
 #### 3.1 Data Lake
@@ -458,4 +465,15 @@ A Modern Data Stack é uma arquitetura que utiliza ferramentas modernas e cloud-
 Para acessar os exercícios deste módulo, consulte os seguintes arquivos:
 - [Exercício 1: Conceitos Básicos](exercicios/exercicio-01.md)
 - [Exercício 2: Arquiteturas de Dados](exercicios/exercicio-02.md)
-- [Exercício 3: Análise Comparativa](exercicios/exercicio-03.md) 
+- [Exercício 3: Análise Comparativa](exercicios/exercicio-03.md)
+
+## 🦆 Tópicos Avançados: DuckDB na Prática
+
+1. **Consultas diretas em Parquet/CSV**: Use DuckDB para consultar arquivos Parquet e CSV sem precisar importar para um banco tradicional.
+2. **Integração com Pandas**: Execute SQL diretamente sobre DataFrames Pandas, combinando o melhor dos dois mundos.
+3. **Funções UDF em Python**: Crie funções Python customizadas e utilize-as em queries SQL no DuckDB.
+4. **Consultas multi-arquivo**: Faça queries em múltiplos arquivos (ex: `read_parquet('dados/*.parquet')`).
+5. **Benchmark de performance**: Compare DuckDB com Pandas, SQLite e outros para workloads analíticos.
+6. **Laboratório de SQL avançado**: Explore janelas analíticas, CTEs recursivas e queries complexas.
+
+> Consulte o notebook `setup/duckdb_lab.ipynb` para exemplos práticos. 

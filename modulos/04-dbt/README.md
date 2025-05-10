@@ -11,6 +11,7 @@ Este módulo aborda os conceitos e práticas do DBT (Data Build Tool) para trans
 - [Testes e Documentação](#3-testes-e-documentação)
 - [Macros e Packages](#4-macros-e-packages)
 - [Modelagem Dimensional](#5-modelagem-dimensional)
+- [🦆 Usando dbt com DuckDB](#-usando-dbt-com-duckdb)
 
 ## 🎯 Objetivos do Módulo
 - Compreender os fundamentos do DBT
@@ -234,6 +235,79 @@ FROM voos v
 LEFT JOIN dim_origem o ON v.origem = o.codigo_aeroporto
 LEFT JOIN dim_destino d ON v.destino = d.codigo_aeroporto
 ```
+
+## 🦆 Usando dbt com DuckDB
+
+O DuckDB é uma excelente opção para laboratórios locais e prototipagem de projetos dbt, pois não requer infraestrutura de cloud e oferece performance de data warehouse em arquivos locais.
+
+### Instalação do Adapter
+O pacote `dbt-duckdb` já está incluído no requirements.txt. Para instalar manualmente:
+```bash
+pip install dbt-duckdb
+```
+
+### Exemplo de configuração do profiles.yml
+Adicione o seguinte perfil ao seu arquivo `~/.dbt/profiles.yml`:
+```yaml
+modern_data_stack:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ./banco_local.duckdb  # Caminho do arquivo do banco local
+      threads: 4
+```
+
+### Executando modelos dbt localmente
+1. Crie o banco local (opcional, será criado automaticamente):
+   ```bash
+   duckdb banco_local.duckdb
+   ```
+2. Execute os modelos normalmente:
+   ```bash
+   dbt run
+   dbt test
+   dbt docs generate
+   dbt docs serve
+   ```
+
+### Dicas
+- Use DuckDB para testar modelos rapidamente antes de migrar para BigQuery ou outro DW.
+- É possível ler arquivos Parquet, CSV e até consultar DataFrames Pandas diretamente do DuckDB.
+
+#### Links úteis
+- [dbt-duckdb adapter](https://docs.getdbt.com/reference/warehouse-setups/duckdb-setup)
+- [Exemplo de projeto dbt com DuckDB](https://github.com/jwills/dbt-duckdb-demo)
+
+## 🦆 Exercícios Avançados com DuckDB
+
+### 1. Consultas Avançadas em Arquivos Parquet
+- Baixe um dataset público em formato Parquet (ex: [NYC Taxi Data](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)).
+- Use DuckDB para consultar diretamente o arquivo Parquet, filtrando corridas por bairro e calculando médias de valor.
+
+### 2. Integração com Pandas
+- Carregue um DataFrame Pandas com dados sintéticos.
+- Use DuckDB para executar queries SQL diretamente sobre o DataFrame.
+- Compare a performance entre DuckDB e Pandas puro para agregações.
+
+### 3. Funções UDF em Python
+- Crie uma função Python customizada (UDF) e registre no DuckDB.
+- Use essa função em uma query SQL para transformar dados.
+
+### 4. Benchmark de Performance
+- Compare o tempo de execução de queries analíticas entre DuckDB, SQLite e Pandas para um dataset de 1 milhão de linhas.
+- Documente os resultados e discuta vantagens e limitações.
+
+### 5. Consultas Multi-Arquivo
+- Use DuckDB para consultar múltiplos arquivos CSV/Parquet em um único comando (ex: `read_parquet('dados/*.parquet')`).
+- Realize joins e agregações entre diferentes arquivos.
+
+### 6. Laboratório de SQL Avançado
+- Implemente janelas analíticas (window functions), CTEs recursivas e queries com subselects complexos usando DuckDB.
+
+#### Recursos
+- [Documentação de funções do DuckDB](https://duckdb.org/docs/sql/functions/overview)
+- [DuckDB Python API](https://duckdb.org/docs/api/python/overview)
 
 ## 💻 Exercícios Práticos
 

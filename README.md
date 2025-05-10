@@ -41,6 +41,7 @@ Este treinamento completo sobre Modern Data Stack foi desenvolvido para profissi
 - Apache Spark
 - Google BigQuery
 - DBT (Data Build Tool)
+- DuckDB (banco de dados analítico local)
 - Metabase
 
 ## 📅 Cronograma
@@ -168,4 +169,33 @@ python verify_environment.py
 ## 👨‍🏫 Suporte
 - Discord: [Link para servidor]
 - GitHub Issues: [Link para issues]
-- Email: suporte@moderndatastack.com 
+- Email: suporte@moderndatastack.com
+
+## 🦆 DuckDB: SQL Analítico Local e Prototipagem
+
+O DuckDB é um banco de dados analítico embutido, orientado a colunas, projetado para processamento analítico local (OLAP) de alta performance. Ele é ideal para:
+- Laboratórios de SQL
+- Prototipagem de pipelines
+- Testes rápidos sem necessidade de infraestrutura
+
+### Instalação
+O DuckDB já está incluído no `requirements.txt`. Para instalar manualmente:
+```bash
+pip install duckdb
+```
+
+### Exemplo rápido de uso em Python
+```python
+import duckdb
+
+# Cria um banco em memória e executa uma query
+con = duckdb.connect()
+con.execute("CREATE TABLE voos (id INTEGER, origem VARCHAR, destino VARCHAR)")
+con.execute("INSERT INTO voos VALUES (1, 'GRU', 'JFK'), (2, 'JFK', 'LHR')")
+result = con.execute("SELECT * FROM voos").fetchdf()
+print(result)
+```
+
+### Documentação
+- [Documentação oficial do DuckDB](https://duckdb.org/docs/)
+- [dbt-duckdb adapter](https://docs.getdbt.com/reference/warehouse-setups/duckdb-setup) 
