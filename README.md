@@ -55,10 +55,11 @@ Este treinamento completo sobre Modern Data Stack foi desenvolvido para profissi
 | Fundamentos   | 2024-01-01               | ███ 3 dias                     |
 | Docker        | 2024-01-04               | ███ 3 dias                     |
 | Airflow       | 2024-01-07               | ███ 3 dias                     |
-| DBT           | 2024-01-10               | ███ 3 dias                     |
-| Spark         | 2024-01-13               | ███ 3 dias                     |
-| BigQuery      | 2024-01-16               | ███ 3 dias                     |
-| Projeto Final | 2024-01-19               | ███ 3 dias                     |
+| DuckDB        | 2024-01-10               | ███ 3 dias                     |
+| DBT           | 2024-01-13               | ███ 3 dias                     |
+| Spark         | 2024-01-16               | ███ 3 dias                     |
+| BigQuery      | 2024-01-19               | ███ 3 dias                     |
+| Projeto Final | 2024-01-22               | ███ 3 dias                     |
 +---------------+---------------------------+--------------------------------+
 ```
 
@@ -73,7 +74,7 @@ Este treinamento completo sobre Modern Data Stack foi desenvolvido para profissi
          |        |        |        |         |         |         |
          v        v        v        v         v         v         v
 +----------------+  +----------+  +---------+  +-----+  +-------+  +---------+  +-------------+
-| 1. Fundamentos |  | 2.Docker |  |3.Airflow|  |4.DBT|  |5.Spark|  |6.BigQuery|  |7.Proj.Final |
+| 1. Fundamentos |  | 2.Docker |  |3.Airflow|  |4.DuckDB|  |5.DBT|  |6.Spark|  |7.BigQuery|  |8.Proj.Final |
 +----------------+  +----------+  +---------+  +-----+  +-------+  +---------+  +-------------+
 ```
 
@@ -91,11 +92,14 @@ Este treinamento completo sobre Modern Data Stack foi desenvolvido para profissi
 - Docker Compose
 - Boas Práticas
 
-### [Módulo 3: Apache Airflow - Orquestração de Dados](modulos/03-airflow)
-- Fundamentos do Airflow
-- Desenvolvimento de DAGs
-- Operadores e Sensores
-- Monitoramento
+### [Módulo 3: DuckDB - SQL Analítico Local](modulos/03-duckdb)
+- Fundamentos do DuckDB
+- Consultas SQL locais
+- Integração com Python e Pandas
+- UDFs e SQL avançado
+- Otimização e boas práticas
+- Integração com dbt
+- Exercícios práticos
 
 ### [Módulo 4: DBT - Transformação de Dados](modulos/04-dbt)
 - Fundamentos do DBT
